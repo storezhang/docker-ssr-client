@@ -3,8 +3,23 @@
 # and "polipo -v" for variables you can tweak and further information.
 
 # Note IPv6 is not enabled
+logSyslog = true
+logFile = /var/log/polipo/polipo.log
+
+
 proxyAddress = "0.0.0.0"
+proxyPort = 1081
 disableIndexing = false
 disableServersList = false
 diskCacheRoot = /cache
 localDocumentRoot = ""
+
+socksParentProxy = "127.0.0.1:1086"
+socksProxyType = socks5
+
+chunkHighMark = 50331648
+objectHighMark = 16384
+
+serverMaxSlots = 64
+serverSlots = 16
+

@@ -4,6 +4,8 @@ MAINTAINER storezhang "storezhang@gmail.com"
 
 ENV SSR_DATA="/ssr-data"
 
+EXPOSE 1081
+
 RUN set -x \
     && echo -e "https://mirrors.ustc.edu.cn/alpine/latest-stable/main\nhttps://mirrors.ustc.edu.cn/alpine/latest-stable/community" > /etc/apk/repositories \
     && apk update \
@@ -21,4 +23,5 @@ ADD ./polipo/config /etc/polipo/config
 
 WORKDIR ${SSR_DATA}
 
-CMD ["su-exec", "ssr", "java", "-jar", "/app.jar"]
+ENTRYPOINT ["/usr/bin/polipo", "-c", "/etc/polipo/config"]
+CMD ["su-exec", "ssr", "python", "shdowsocks/local.py"]
