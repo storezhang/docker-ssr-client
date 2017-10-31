@@ -2,21 +2,23 @@ FROM alpine
 
 MAINTAINER storezhang "storezhang@gmail.com"
 
-ENV CASH_AGENT_DATA="/cash-agent-data"
+ENV SSR_DATA="/ssr-data"
 
 RUN set -x \
     && echo -e "https://mirrors.ustc.edu.cn/alpine/latest-stable/main\nhttps://mirrors.ustc.edu.cn/alpine/latest-stable/community" > /etc/apk/repositories \
     && apk update \
-    && apk --no-cache add \
-        openjdk8-jre-base \
-        su-exec \
-    && adduser -S -h ${CASH_AGENT_DATA} cash-agent \
-    && mkdir -p "${CASH_AGENT_DATA}" \
-    && chown -R cash-agent "${CASH_AGENT_DATA}"
+    && apk --no-cache add su-exec python \
+    && mkdir -p /etc/polipo \
+    && mkdir /cache \
+    && adduser -S -h ${SSR_DATA} ssr \
+    && mkdir -p "${SSR_DATA}" \
+    && chown -R ssr "${SSR_DATA}"
 
-VOLUME ${CASH_AGENT_DATA}
+VOLUME ${SSR_DATA}
 ADD ./shadowsocks shadowsocks
+ADD ./polipo/polipo /usr/bin/polipo
+ADD ./polipo/config /etc/polipo/config
 
-WORKDIR ${CASH_AGENT_DATA}
+WORKDIR ${SSR_DATA}
 
-CMD ["su-exec", "cash-agent", "java", "-jar", "/app.jar"]
+CMD ["su-exec", "ssr", "java", "-jar", "/app.jar"]
