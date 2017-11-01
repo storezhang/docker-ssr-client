@@ -1,11 +1,11 @@
 {
-    "server": "104.225.149.2",
+    "server": "0.0.0.0",
     "server_ipv6": "::",
-    "server_port": 19643,
+    "server_port": 1086,
     "local_address": "0.0.0.0",
     "local_port": 1086,
 
-    "password": "ZWZhZGI1OW",
+    "password": "1008611",
     "method": "aes-128-ctr",
     "protocol": "auth_aes128_md5",
     "protocol_param": "",
@@ -23,4 +23,3 @@
     "redirect": "",
     "fast_open": false
 }
-
