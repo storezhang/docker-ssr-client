@@ -19,9 +19,9 @@ RUN set -x \
 VOLUME ${SSR_DATA}
 ADD ./shadowsocks shadowsocks
 ADD ./polipo/polipo /usr/bin/polipo
-ADD ./polipo/config /etc/polipo/config
+ADD ./polipo/config polipo/config
 
 WORKDIR ${SSR_DATA}
 
-ENTRYPOINT ["/usr/bin/polipo", "-c", "/etc/polipo/config"]
+ENTRYPOINT ["/usr/bin/polipo", "-c", "polipo/config"]
 CMD ["su-exec", "ssr", "python", "shdowsocks/local.py"]
