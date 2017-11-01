@@ -4,14 +4,13 @@
 
 # Note IPv6 is not enabled
 logSyslog = true
-logFile = /var/log/polipo/polipo.log
-
+logFile = /ssr-data/polipo.log
 
 proxyAddress = "0.0.0.0"
 proxyPort = 1081
 disableIndexing = false
 disableServersList = false
-diskCacheRoot = /cache
+diskCacheRoot = /ssr-data/cache
 localDocumentRoot = ""
 
 socksParentProxy = "127.0.0.1:1086"
@@ -22,4 +21,3 @@ objectHighMark = 16384
 
 serverMaxSlots = 64
 serverSlots = 16
-
