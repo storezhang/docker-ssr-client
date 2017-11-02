@@ -21,6 +21,6 @@ WORKDIR ${SSR_DATA}
 COPY ./shadowsocks ${SSR_DATA}/shadowsocks
 ADD ./polipo/polipo /usr/bin/polipo
 ADD ./polipo/config ${SSR_DATA}/polipo/config
-ADD ./supervisord.conf supervisord.conf
+ADD ./supervisord.conf ${SSR_DATA}/supervisord.conf
 
-ENTRYPOINT ["supervisord", "-c", "supervisord.conf"]
+ENTRYPOINT ["supervisord", "-c", "${SSR_DATA}/supervisord.conf"]
